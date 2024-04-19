@@ -18,6 +18,9 @@ public class GamePanel extends JPanel {
 	public GamePanel() {
 		Dimension dimension = new Dimension(1080, 800);
 		InputHandler input = new InputHandler(this, player);
+
+		this.setFocusable(true);
+		this.requestFocus();
 		
 		this.setMinimumSize(dimension);
 		this.setPreferredSize(dimension);
