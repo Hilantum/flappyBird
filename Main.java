@@ -34,7 +34,7 @@ public class Main implements Runnable {
 			lastDeltaNano = currentNano;
 			
 			if (tickDelta >= 1) {
-				// panel.refresh();
+				panel.refresh();
 				tickDelta -= 1; numTicks += 1;
 			}
 			

@@ -1,27 +1,46 @@
 package handlers;
 
 import components.GamePanel;
+import objects.Player;
+
 import java.awt.event.*;
 import java.awt.*;
 
 public class InputHandler implements KeyListener, MouseListener {
 	private GamePanel panel;
+	private Player player;
 	
-	public InputHandler(GamePanel panel) {
+	public InputHandler(GamePanel panel, Player player) {
 		this.panel = panel;
+		this.player = player;
 	}
 	
 	/* Keyboard Methods */
 	@Override public void keyTyped(KeyEvent event) {
-	
+		
 	}
 
 	@Override public void keyPressed(KeyEvent event) {
-
+		switch(event.getKeyCode()) {
+			case(KeyEvent.VK_A): player.move("left");
+			break;
+			
+			case(KeyEvent.VK_D): player.move("right");
+			break;
+			
+			//case(KeyEvent.VK_SPACE): player.jump();
+			//break;
+		}
 	}
 
 	@Override public void keyReleased(KeyEvent event) {
-
+		switch(event.getKeyCode()) {
+			case(KeyEvent.VK_A): player.stop();
+			break;
+			
+			case(KeyEvent.VK_D): player.stop();
+			break;
+	}
 	}
 	
 	/* Mouse Methods */

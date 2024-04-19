@@ -6,10 +6,12 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class AnimationHandler {
-	public BufferedImage[][] loadSprites() {
-		InputStream stream = getClass().getResourceAsStream("/content/player_sprites.png");
-		BufferedImage[][] spriteAnimations = new BufferedImage[9][6];
-
+	InputStream stream = getClass().getResourceAsStream("/content/player_sprites.png");
+	BufferedImage[][] spriteAnimations = new BufferedImage[9][6];
+	
+	BufferedImage[] current;
+	
+	public AnimationHandler() {
 		try {
 			BufferedImage image = ImageIO.read(stream); 
 			
@@ -19,7 +21,17 @@ public class AnimationHandler {
 				}
 			}
 		} catch (IOException exception) { } 
-		
-		return spriteAnimations;
+	}
+	
+	public BufferedImage[] getIdleSprites() {
+		return spriteAnimations[0];
+	}
+	
+	public BufferedImage[] getMovingSprites() {
+		return spriteAnimations[1];
+	}
+	
+	public BufferedImage[] getJumpingSprites() {
+		return spriteAnimations[2];
 	}
 }
