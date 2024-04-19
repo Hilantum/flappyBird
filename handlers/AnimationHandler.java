@@ -7,31 +7,43 @@ import javax.imageio.ImageIO;
 
 public class AnimationHandler {
 	InputStream stream = getClass().getResourceAsStream("/content/player_sprites.png");
-	BufferedImage[][] spriteAnimations = new BufferedImage[9][6];
-	
-	BufferedImage[] current;
-	
+	BufferedImage atlas;
+		
 	public AnimationHandler() {
 		try {
-			BufferedImage image = ImageIO.read(stream); 
-			
-			for (int i = 0; i < spriteAnimations.length; i++) {
-				for (int j = 0; j < spriteAnimations[i].length; j++) {
-					spriteAnimations[i][j] = image.getSubimage(j * 64, i * 40, 64, 40);
-				}
-			}
-		} catch (IOException exception) { } 
-	}
+			atlas = ImageIO.read(stream);
+		} catch (IOException exception) { 
+			System.out.println(exception.getMessage()); 
+		}
+	} 
 	
 	public BufferedImage[] getIdleSprites() {
-		return spriteAnimations[0];
+		BufferedImage[] temp = new BufferedImage[5];
+
+		for (int i = 0; i < 5; i++) {
+			temp[i] = atlas.getSubimage((i+1) * 64, 1 * 40, 64, 40);
+		}
+
+		return temp;
 	}
 	
 	public BufferedImage[] getMovingSprites() {
-		return spriteAnimations[1];
+		BufferedImage[] temp = new BufferedImage[4];
+
+		for (int i = 0; i < 6; i++) {
+			temp[i] = atlas.getSubimage((i+1) * 64, 2 * 40, 64, 40);
+		}
+
+		return temp;
 	}
 	
 	public BufferedImage[] getJumpingSprites() {
-		return spriteAnimations[2];
+		BufferedImage[] temp = new BufferedImage[4];
+
+		for (int i = 0; i < 3; i++) {
+			temp[i] = atlas.getSubimage((i+1) * 64, 3 * 40, 64, 40);
+		}
+
+		return temp;	
 	}
 }
