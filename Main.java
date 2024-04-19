@@ -1,8 +1,4 @@
-import java.awt.event.*;
-import javax.swing.*;
-import components.*;
-import java.time.*;
-import java.awt.*; 
+import components.*; 
 
 public class Main implements Runnable {
 	private GamePanel panel;
