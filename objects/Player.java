@@ -17,10 +17,10 @@ public class Player {
 	private boolean movingLeft = false;
 	private boolean jumping = false;
 	private boolean falling = false;
-	private boolean running = false;
+	private boolean active = false;
 	
 	private int animTick = 0, animSprite = 0;
-	private int diff = 0, diff2 = 0;
+	private int diff = 0;
 	private int x = 0, y = 0;
 	
 	public Player(int x, int y) {
@@ -44,15 +44,26 @@ public class Player {
 		}
 	}
 
+
+	public void jump() {
+		if (!jumping && !falling) {
+			jumping = true;
+		}
+	}
+
 	public void update() {
-		if (running) { return; } else { running = true; }  // Prevents length errors
+		if (active) { return; } else { active = true; }  // Prevents length errors
 
 		// Sprite Logical Implementation
-		if ((movingLeft || movingRight) && !jumping) {
+		if (movingLeft && !movingRight && !jumping) {
 			current = AH.getMovingSprites();
+		} else if (!movingLeft && movingRight && !jumping) {
+			current = AH.getMovingSprites();
+		} else if (movingLeft && movingRight) {
+			current = AH.getIdleSprites();	
 		} else if (jumping) {
 			current = AH.getJumpingSprites();
-		} else {
+		}  else {
 			current = AH.getIdleSprites();
 		}
 
@@ -70,16 +81,39 @@ public class Player {
 			}	
 		}
 
-		running = false;
+		active = false;
 	}
 	
 	public void render(Graphics2D G2D) {
+
+		// Movement Management
 		if (movingLeft && !movingRight) {
 			x -= 2;
 		} else if (movingRight && !movingLeft) {
 			x += 2;
 		}
+
+		if (jumping) {
+			if (diff < 25) {
+				diff += 1;
+				y -= 2;
+			} else {
+				jumping = false;
+				falling = true;
+			}
+		}
+
+		if (falling) {
+			if (diff > 0) {
+				diff -= 1;
+				y += 2;
+			} else {
+				falling = false;
+			}
+		}
 				
-		G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+		try {
+			G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+		} catch (Exception exception) {}
 	}
 }

@@ -28,8 +28,8 @@ public class InputHandler implements KeyListener, MouseListener {
 			case(KeyEvent.VK_D): player.move("right");
 			break;
 			
-			/*case(KeyEvent.VK_SPACE): player.jump();
-			break;*/
+			case(KeyEvent.VK_SPACE): player.jump();
+			break;
 		}
 	}
 

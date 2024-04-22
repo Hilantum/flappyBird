@@ -46,4 +46,13 @@ public class AnimationHandler {
 
 		return temp;	
 	}
+	public BufferedImage[] getFallingSprites() {
+		BufferedImage[] temp = new BufferedImage[3];
+
+		for (int i =0; i < 3; i ++) {
+			temp[i] = atlas.getSubimage(3 * 64, 2 * 40, 64, 40);
+		}
+
+		return temp;
+	}
 }
