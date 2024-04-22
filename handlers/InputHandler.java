@@ -28,17 +28,17 @@ public class InputHandler implements KeyListener, MouseListener {
 			case(KeyEvent.VK_D): player.move("right");
 			break;
 			
-			//case(KeyEvent.VK_SPACE): player.jump();
-			//break;
+			/*case(KeyEvent.VK_SPACE): player.jump();
+			break;*/
 		}
 	}
 
 	@Override public void keyReleased(KeyEvent event) {
 		switch(event.getKeyCode()) {
-			case(KeyEvent.VK_A): player.stop();
+			case(KeyEvent.VK_A): player.stop("left");
 			break;
 			
-			case(KeyEvent.VK_D): player.stop();
+			case(KeyEvent.VK_D): player.stop("right");
 			break;
 	}
 	}

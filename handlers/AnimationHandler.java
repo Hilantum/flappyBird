@@ -21,27 +21,27 @@ public class AnimationHandler {
 		BufferedImage[] temp = new BufferedImage[5];
 
 		for (int i = 0; i < 5; i++) {
-			temp[i] = atlas.getSubimage((i+1) * 64, 1 * 40, 64, 40);
+			temp[i] = atlas.getSubimage(i * 64, 0 * 40, 64, 40);
 		}
 
 		return temp;
 	}
 	
 	public BufferedImage[] getMovingSprites() {
-		BufferedImage[] temp = new BufferedImage[4];
+		BufferedImage[] temp = new BufferedImage[6];
 
 		for (int i = 0; i < 6; i++) {
-			temp[i] = atlas.getSubimage((i+1) * 64, 2 * 40, 64, 40);
+			temp[i] = atlas.getSubimage(i * 64, 1 * 40, 64, 40);
 		}
 
 		return temp;
 	}
-	
+
 	public BufferedImage[] getJumpingSprites() {
-		BufferedImage[] temp = new BufferedImage[4];
+		BufferedImage[] temp = new BufferedImage[3];
 
 		for (int i = 0; i < 3; i++) {
-			temp[i] = atlas.getSubimage((i+1) * 64, 3 * 40, 64, 40);
+			temp[i] = atlas.getSubimage(i * 64, 2 * 40, 64, 40);
 		}
 
 		return temp;	

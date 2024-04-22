@@ -11,9 +11,6 @@ import handlers.*;
 
 public class GamePanel extends JPanel {
 	Player player = new Player(500, 500);
-	private BufferedImage[][] images;
-	private BufferedImage image;
-	private int x = 0, y = 0;
 	
 	public GamePanel() {
 		Dimension dimension = new Dimension(1080, 800);
