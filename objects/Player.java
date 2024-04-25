@@ -9,6 +9,7 @@ import handlers.AnimationHandler;
 
 public class Player {
 	private AnimationHandler AH = new AnimationHandler();
+	private BufferedImage[] next = AH.getIdleSprites();
 	private BufferedImage[] current = AH.getIdleSprites();
 	
 	private String direction = "";
@@ -17,15 +18,24 @@ public class Player {
 	private boolean movingLeft = false;
 	private boolean jumping = false;
 	private boolean falling = false;
+	private boolean attacking = false;
+
+	private boolean buffer = false;
 	private boolean active = false;
 	
-	private int animTick = 0, animSprite = 0;
+	private int animTick = 0, animSprite = 0, animLength = 0;
 	private int diff = 0;
 	private int x = 0, y = 0;
 	
 	public Player(int x, int y) {
 		this.x = x; 
 		this.y = y;
+	}
+
+	public void attack() {
+		if (!attacking) {
+			attacking = true;
+		}
 	}
 
 	public void move(String direction) {
@@ -44,7 +54,6 @@ public class Player {
 		}
 	}
 
-
 	public void jump() {
 		if (!jumping && !falling) {
 			jumping = true;
@@ -56,16 +65,26 @@ public class Player {
 
 		// Sprite Logical Implementation
 		if (movingLeft && !movingRight && !jumping) {
-			current = AH.getMovingSprites();
+			next = AH.getMovingSprites();
+			animLength = current.length;
 		} else if (!movingLeft && movingRight && !jumping) {
-			current = AH.getMovingSprites();
+			next = AH.getMovingSprites();
+			animLength = current.length;
 		} else if (movingLeft && movingRight) {
-			current = AH.getIdleSprites();	
+			next = AH.getIdleSprites();	
+			animLength = current.length;
 		} else if (jumping) {
-			current = AH.getJumpingSprites();
+			next = AH.getJumpingSprites();
+			animLength = current.length;
 		}  else {
-			current = AH.getIdleSprites();
+			next = AH.getIdleSprites();
+			animLength = current.length;
 		}
+
+		if (attacking) {
+			next = AH.getMoveAttackSprites();
+			animLength = current.length;
+		} 
 
 		// Animation Tick
 		if (animTick < 25) {
@@ -74,10 +93,12 @@ public class Player {
 			animTick = 0;
 
 			// Sprite Concurrency
-			if (animSprite < (current.length - 1)) {
+			if (animSprite < (next.length - 1) && next.length == animLength) {
 				animSprite += 1;
 			} else {
 				animSprite = 0;
+
+				if (attacking) { attacking = false; }
 			}	
 		}
 
@@ -85,6 +106,8 @@ public class Player {
 	}
 	
 	public void render(Graphics2D G2D) {
+		current = next;
+
 
 		// Movement Management
 		if (movingLeft && !movingRight) {
@@ -112,8 +135,16 @@ public class Player {
 			}
 		}
 				
-		try {
-			G2D.drawImage(current[animSprite], x, y, 192, 120, null);
-		} catch (Exception exception) {}
+		try { 
+			if (current.length == animLength) {
+				G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+			} else {
+				animSprite = 0;
+
+				G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+			}
+		} catch (Exception exception) {
+			System.out.println("ERROR | " + current.length);
+		}
 	}
 }

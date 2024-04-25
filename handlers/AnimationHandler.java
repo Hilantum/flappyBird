@@ -49,8 +49,28 @@ public class AnimationHandler {
 	public BufferedImage[] getFallingSprites() {
 		BufferedImage[] temp = new BufferedImage[3];
 
-		for (int i =0; i < 3; i ++) {
+		for (int i = 0; i < 3; i ++) {
 			temp[i] = atlas.getSubimage(3 * 64, 2 * 40, 64, 40);
+		}
+
+		return temp;
+	}
+
+	public BufferedImage[] getAttackSprites() {
+		BufferedImage[] temp = new BufferedImage[2];
+
+		for (int i = 0; i < 3; i ++) {
+			temp[i] = atlas.getSubimage(i * 64, 4 * 40, 64, 40);
+		}
+
+		return temp;
+	}
+
+	public BufferedImage[] getMoveAttackSprites() {
+		BufferedImage[] temp = new BufferedImage[3];
+
+		for (int i =0; i < 3; i ++) {
+			temp[i] = atlas.getSubimage(i * 64, 6 * 40, 64, 40);
 		}
 
 		return temp;

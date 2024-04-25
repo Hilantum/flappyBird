@@ -40,12 +40,12 @@ public class InputHandler implements KeyListener, MouseListener {
 			
 			case(KeyEvent.VK_D): player.stop("right");
 			break;
-	}
+		}
 	}
 	
 	/* Mouse Methods */
 	@Override public void mouseClicked(MouseEvent event) {
-		
+		player.attack();
 	}
 
 	@Override public void mousePressed(MouseEvent event) {
