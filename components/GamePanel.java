@@ -1,7 +1,7 @@
 package components;
 
 import java.awt.image.*;
-import objects.Player;
+import objects.P;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.io.*;
 import handlers.*;
 
 public class GamePanel extends JPanel {
-	Player player = new Player(500, 500);
+	P player = new P(600, 700);
 	
 	public GamePanel() {
 		Dimension dimension = new Dimension(1080, 800);
