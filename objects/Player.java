@@ -13,14 +13,14 @@ public class Player {
 	private BufferedImage[] current = AH.getIdleSprites();
 	
 	private String direction = "";
-	
+
 	private boolean movingRight = false;
 	private boolean movingLeft = false;
 	private boolean jumping = false;
 	private boolean falling = false;
 	private boolean attacking = false;
 
-	private boolean buffer = false;
+	private boolean change = false;
 	private boolean active = false;
 	
 	private int animTick = 0, animSprite = 0, animLength = 0;
@@ -82,8 +82,13 @@ public class Player {
 		}
 
 		if (attacking) {
-			next = AH.getMoveAttackSprites();
-			animLength = current.length;
+			if (change) {
+				next = AH.getMoveAttackSprites();
+				animLength = current.length;
+			}  else {
+				next = AH.getAnotherAttackSprites();
+				animLength = current.length;
+			}
 		} 
 
 		// Animation Tick
@@ -99,6 +104,7 @@ public class Player {
 				animSprite = 0;
 
 				if (attacking) { attacking = false; }
+				change = !change;
 			}	
 		}
 
@@ -137,11 +143,11 @@ public class Player {
 				
 		try { 
 			if (current.length == animLength) {
-				G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+				G2D.drawImage(current[animSprite], x, y, 256, 160, null);
 			} else {
 				animSprite = 0;
 
-				G2D.drawImage(current[animSprite], x, y, 192, 120, null);
+				G2D.drawImage(current[animSprite], x, y, 256, 160, null);
 			}
 		} catch (Exception exception) {
 			System.out.println("ERROR | " + current.length);

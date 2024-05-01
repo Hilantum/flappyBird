@@ -75,4 +75,14 @@ public class AnimationHandler {
 
 		return temp;
 	}
+
+	public BufferedImage[] getAnotherAttackSprites() {
+		BufferedImage[] temp = new BufferedImage[3];
+
+		for (int i =0; i < 3; i ++) {
+			temp[i] = atlas.getSubimage(i * 64, 7 * 40, 64, 40);
+		}
+
+		return temp;
+	}
 }
