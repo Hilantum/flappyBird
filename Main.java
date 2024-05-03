@@ -7,7 +7,7 @@ public class Main implements Runnable {
 	public Main() {
 		panel = new GamePanel();
 		frame = new GameFrame(panel);
-		
+
 		Thread thread = new Thread(this);
 		thread.run();
 	}

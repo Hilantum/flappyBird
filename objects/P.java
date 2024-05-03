@@ -1,12 +1,15 @@
 package objects;
 
 import java.awt.image.*;
+
+import javax.swing.JPanel;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
 import handlers.AH;
 
-public class P {
+public class P extends JPanel {
     private BufferedImage[] current;
     private AH AH = new AH();
 
@@ -20,6 +23,7 @@ public class P {
     private int fallTick = 0;
 
     private double rotationalRadian = 0.0;
+    private int modx = 0, mody = 0;
     private int oldx = 0, oldy = 0;
     private int x = 0, y = 0;
 
@@ -77,7 +81,7 @@ public class P {
                 }
             } else {
                 if (y > (oldy - 140)) {
-                    y -= 5;
+                    y -= 4;
                     rotationalRadian += .03;
                 } else {
                     playerJumping = false;
@@ -90,9 +94,6 @@ public class P {
 
     public void render(Graphics2D G2D) {
         try {
-            AffineTransform tx = AffineTransform.getRotateInstance(rotationalRadian, current[animationSprite].getWidth(), current[animationSprite].getHeight());
-            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-
             G2D.drawImage(current[animationSprite], x, y, 23 * 5, 13 * 5, null);
         } catch (Exception exception) {
 

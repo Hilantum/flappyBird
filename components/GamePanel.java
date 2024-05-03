@@ -1,6 +1,8 @@
 package components;
 
 import java.awt.image.*;
+
+import objects.Environment;
 import objects.P;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,10 +12,11 @@ import java.io.*;
 import handlers.*;
 
 public class GamePanel extends JPanel {
+	Environment environment = new Environment();
 	P player = new P(600, 700);
 	
 	public GamePanel() {
-		Dimension dimension = new Dimension(1080, 800);
+		Dimension dimension = new Dimension(288 * 3, 256 * 3);
 		InputHandler input = new InputHandler(this, player);
 
 		this.setFocusable(true);
@@ -28,6 +31,7 @@ public class GamePanel extends JPanel {
 	}
 	
 	public void refresh() {
+		environment.update();
 		player.update();
 	}
 	
@@ -35,6 +39,7 @@ public class GamePanel extends JPanel {
 		super.paintComponent(graphics);
 		Graphics2D G2D = (Graphics2D)graphics;
 		
+		environment.render(G2D);
 		player.render(G2D);
 	}
 }
