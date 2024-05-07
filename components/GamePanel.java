@@ -13,11 +13,11 @@ import handlers.*;
 
 public class GamePanel extends JPanel {
 	Environment environment = new Environment();
-	P player = new P(600, 700);
+	P player = new P(432 - (23 * 5 / 2), 384 - (13 * 5 / 2));
 	
 	public GamePanel() {
 		Dimension dimension = new Dimension(288 * 3, 256 * 3);
-		InputHandler input = new InputHandler(this, player);
+		InputHandler input = new InputHandler(this, player, environment);
 
 		this.setFocusable(true);
 		this.requestFocus();

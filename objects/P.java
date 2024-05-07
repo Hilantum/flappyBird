@@ -17,6 +17,7 @@ public class P extends JPanel {
     private boolean playerFlapping = false;
     private boolean playerJumping = false;
     private boolean playerDead = false;
+    public boolean playerBegun = false;
 
     private int animationSprite = 0;
     private int animationTick = 0;
@@ -48,10 +49,16 @@ public class P extends JPanel {
         if (playerDead) {
             playerFlapping = false;
             current = AH.getStationarySprites();
+            return;
         } else {
             playerFlapping = true;
             current = AH.getFlappingSprites();
         }
+
+        /*if (!playerBegun) { 
+            scriptUpdating = false;
+            return; 
+        }*/
 
         // Tick Implementation with 8 revolutions p/second (200 ticks p/minute)
         if (animationTick < 25) {
@@ -89,6 +96,10 @@ public class P extends JPanel {
             }
         }   
 
+        if (this.y >= 730 || this.y <= 0) {
+            this.playerDead = true;
+        }
+
         scriptUpdating = false;
     }
 
@@ -100,3 +111,5 @@ public class P extends JPanel {
         }
     }
 }
+
+// For next time, go down on the value array until it's invisible, then simply do reset, which will make everything reset.

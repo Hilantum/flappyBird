@@ -1,18 +1,20 @@
 package handlers;
 
 import components.GamePanel;
-import objects.P;
+import objects.*;
 
 import java.awt.event.*;
 import java.awt.*;
 
 public class InputHandler implements KeyListener, MouseListener {
+	private Environment environment;
 	private GamePanel panel;
 	private P player;
 	
-	public InputHandler(GamePanel panel, P player) {
+	public InputHandler(GamePanel panel, P player, Environment environment) {
 		this.panel = panel;
 		this.player = player;
+		this.environment = environment;
 	}
 	
 	/* Keyboard Methods */
@@ -50,7 +52,12 @@ public class InputHandler implements KeyListener, MouseListener {
 	
 	/* Mouse Methods */
 	@Override public void mouseClicked(MouseEvent event) {
-		player.flap();
+		if (!player.playerBegun) {
+			environment.moving = true;
+			player.playerBegun = true;
+		} else {
+			player.flap();
+		}
 	}
 
 	@Override public void mousePressed(MouseEvent event) {
