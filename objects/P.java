@@ -106,9 +106,7 @@ public class P extends JPanel {
     public void render(Graphics2D G2D) {
         try {
             G2D.drawImage(current[animationSprite], x, y, 23 * 5, 13 * 5, null);
-        } catch (Exception exception) {
-
-        }
+        } catch (Exception exception) {}
     }
 }
 
