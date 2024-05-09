@@ -9,7 +9,7 @@ import java.io.*;
 
 public class Environment extends JPanel {
     private InputStream stream = getClass().getResourceAsStream("/content/SPRITES.png");
-    private BufferedImage[] currentBackgrounds = new BufferedImage[3];
+    private BufferedImage background;
     private BufferedImage platform;
     private BufferedImage image;
 
@@ -47,10 +47,7 @@ public class Environment extends JPanel {
 
     public void addNormalBackground() {
         currentBackground = "normal";
-
-        currentBackgrounds[0] = image.getSubimage(0, 0, 144, 256);
-        currentBackgrounds[1] = image.getSubimage(0, 0, 144, 256);
-        currentBackgrounds[2] = image.getSubimage(0, 0, 144, 256);
+        background = image.getSubimage(0, 0, 144, 256);
     }
 
     public void addNightBackground() {
@@ -84,15 +81,15 @@ public class Environment extends JPanel {
 
     public void render(Graphics2D G2D) {
         try {
-            G2D.drawImage(currentBackgrounds[0], backgroundValues[0][0], backgroundValues[0][1], 144 * 3, 256 * 3, null);
-            G2D.drawImage(currentBackgrounds[1], backgroundValues[1][0], backgroundValues[1][1], 144 * 3, 256 * 3, null);
-            G2D.drawImage(currentBackgrounds[2], backgroundValues[2][0], backgroundValues[2][1], 144 * 3, 256 * 3, null);
-
-            G2D.drawImage(platform, platformValues[0][0], platformValues[0][1], 168 * 3, 55 * 3, null);
-            G2D.drawImage(platform, platformValues[1][0], platformValues[1][1], 168 * 3, 55 * 3, null);
-            G2D.drawImage(platform, platformValues[2][0], platformValues[2][1], 168 * 3, 55 * 3, null);
+            for (int i = 0; i < 3; i++) {
+                G2D.drawImage(background, backgroundValues[i][0], backgroundValues[i][1], 144 * 3, 256 * 3, null);
+            }
+    
+            for (int i = 0; i < 3; i++) {
+                G2D.drawImage(platform, platformValues[i][0], platformValues[i][1], 168 * 3, 55 * 3, null);
+            }
         } catch (Exception exception) {
             System.out.println("ERROR | Failed to display ENV background");
         }
-    }
+    }    
 }

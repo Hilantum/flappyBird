@@ -9,7 +9,7 @@ public class Main implements Runnable {
 		frame = new GameFrame(panel);
 
 		Thread thread = new Thread(this);
-		thread.run();
+		thread.start();
 	}
 	
 	@Override public void run() {
@@ -30,7 +30,8 @@ public class Main implements Runnable {
 			lastDeltaNano = currentNano;
 			
 			if (tickDelta >= 1) {
-				panel.refresh();
+				panel.getEnvironment().update();
+				panel.getPlayer().update();
 				tickDelta -= 1; numTicks += 1;
 			}
 			

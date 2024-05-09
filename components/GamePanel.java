@@ -14,7 +14,7 @@ import handlers.*;
 public class GamePanel extends JPanel {
 	Environment environment = new Environment();
 	P player = new P(432 - (23 * 5 / 2), 384 - (13 * 5 / 2));
-	
+
 	public GamePanel() {
 		Dimension dimension = new Dimension(288 * 3, 256 * 3);
 		InputHandler input = new InputHandler(this, player, environment);
@@ -30,11 +30,18 @@ public class GamePanel extends JPanel {
 		this.addKeyListener(input);
 	}
 	
-	public void refresh() {
-		environment.update();
-		player.update();
+	public Environment getEnvironment() {
+		return environment;
 	}
-	
+
+	public P getPlayer() {
+		return player;
+	}
+
+	public void refresh() {
+		
+	}
+
 	public void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
 		Graphics2D G2D = (Graphics2D)graphics;
