@@ -1,16 +1,19 @@
-[[ March 2nd, 2024 ]]
+[[ April 20th, 2024 ]]
 Laid the structural work for the class. Making sure that everything is modular to an extend and organized. I created
 the "GameFrame", "GamePanel", and "Game" classes. They are in a package because Eclipse (for some reason) forces only
 package encompassing for files affected by the compiler. The "Game" class is in the default package because it will 
 handle and affect all classes as the main game handling file.
 
-[[ March 3rd, 2024 ]]
+[[ April 22nd, 2024 ]]
 Today I'll be laying the ground work for the input handlers and finding methods for the gameloop. I'll be using MouseListener
 and KeyListener for the input handling. For the gameloop, I think I'll either use timer since it's fairly automated, or I'll
 make a loop myself in the Main class. 
 
+[[ April 24th, 2024 ]]
 I decided to not use the timer since it's single-threaded. I created my own thread and used some math to limit FPS so that
 I don't get a crazy amount of threads that overloads the thread and makes graphics less smooth. I also made it so that it 
 prints the amount of FPS. Not sure why it randomly changes from 120 to 119, may be a math issue. I'll look into it later. I
 also added a config file so that I can change important values without having to search for them manually. I wanted to use
 enumerated types but Java doesn't use them like Lua so they're a bit pointless for my goals.
+
+[[ April 28th, 2024 ]]
