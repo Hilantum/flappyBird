@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=AnimationHandler
+comment1.params=
+comment1.target=AnimationHandler()
+comment2.params=
+comment2.target=java.awt.image.BufferedImage[]\ getOtherFlappingSprites()
+comment3.params=
+comment3.target=java.awt.image.BufferedImage[]\ getFlappingSprites()
+comment4.params=
+comment4.target=java.awt.image.BufferedImage[]\ getStationarySprites()
+numComments=5

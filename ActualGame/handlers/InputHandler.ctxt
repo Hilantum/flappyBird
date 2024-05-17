@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=InputHandler
+comment1.params=panel\ player\ environment
+comment1.target=InputHandler(components.GamePanel,\ objects.Player,\ objects.Environment)
+comment2.params=event
+comment2.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment2.text=Keyboard\ Methods
+comment3.params=event
+comment3.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment4.params=event
+comment4.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment5.params=event
+comment5.target=void\ mouseClicked(java.awt.event.MouseEvent)
+comment5.text=Mouse\ Methods
+comment6.params=event
+comment6.target=void\ mousePressed(java.awt.event.MouseEvent)
+comment7.params=event
+comment7.target=void\ mouseReleased(java.awt.event.MouseEvent)
+comment8.params=event
+comment8.target=void\ mouseEntered(java.awt.event.MouseEvent)
+comment9.params=event
+comment9.target=void\ mouseExited(java.awt.event.MouseEvent)
+numComments=10

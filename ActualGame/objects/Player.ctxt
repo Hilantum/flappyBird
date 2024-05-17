@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Player
+comment1.params=x\ y
+comment1.target=Player(int,\ int)
+comment2.params=
+comment2.target=void\ flap()
+comment3.params=
+comment3.target=void\ update()
+comment4.params=G2D
+comment4.target=void\ render(java.awt.Graphics2D)
+numComments=5

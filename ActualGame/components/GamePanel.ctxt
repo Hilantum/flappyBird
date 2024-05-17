@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=GamePanel
+comment1.params=
+comment1.target=GamePanel()
+comment2.params=
+comment2.target=objects.Environment\ getEnvironment()
+comment3.params=
+comment3.target=objects.Player\ getPlayer()
+comment4.params=
+comment4.target=void\ begin()
+comment5.params=graphics
+comment5.target=void\ paintComponent(java.awt.Graphics)
+numComments=6

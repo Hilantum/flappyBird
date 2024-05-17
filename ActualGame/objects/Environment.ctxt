@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Environment
+comment1.params=player
+comment1.target=Environment(Player)
+comment2.params=
+comment2.target=void\ resetBackground()
+comment3.params=
+comment3.target=void\ resetPlatform()
+comment4.params=
+comment4.target=void\ addNormalBackground()
+comment5.params=
+comment5.target=void\ addNightBackground()
+comment6.params=
+comment6.target=void\ addPlatform()
+comment7.params=
+comment7.target=void\ update()
+comment8.params=G2D
+comment8.target=void\ render(java.awt.Graphics2D)
+numComments=9
